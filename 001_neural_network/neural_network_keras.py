@@ -15,16 +15,17 @@ layer1 = Dense(
 
 print("Weights ", layer1.get_weights() )
 
-w = numpy.random.rand(4, 1);
-print(w)
-b = numpy.random.rand(1)
-print(b)
+# Test numpy array structures
+# w = numpy.random.rand(4, 1);
+# print(w)
+# b = numpy.random.rand(1)
+# print(b)
 
 # Add a input layer
+# Can add multiple layers specifying the output vector and activation('relu', 'sigmoid', 'softmax' ) etc
 model.add(
   layer1
 )
-# Can add multiple layers specifying the output vector and activation('relu', 'sigmoid', 'softmax' ) etc
 
 # Set the weight
 weights = numpy.array( [
@@ -91,4 +92,9 @@ print(
   )
 )
 
+# Saving the trained model
+model.save("binary_classifier_model.h5")
 
+# load model
+# from keras.models import load_model
+# model = load_model('my_model.h5')
