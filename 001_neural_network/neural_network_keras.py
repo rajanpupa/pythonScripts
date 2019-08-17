@@ -20,18 +20,25 @@ print(w)
 b = numpy.random.rand(1)
 print(b)
 
-# weights = numpy.array([1,0,0])
-# biases = numpy.array([0])
-# setting weights
-# layer1.set_weights(
-#   [w,b]
-# )
-
 # Add a input layer
 model.add(
   layer1
 )
 # Can add multiple layers specifying the output vector and activation('relu', 'sigmoid', 'softmax' ) etc
+
+# Set the weight
+weights = numpy.array( [
+  [.5],
+  [.5],
+  [.5]
+])
+# print(weights)
+biases = numpy.array([0])
+# print(biases)
+# setting weights
+layer1.set_weights(
+  [weights, biases]
+)
 
 # Compile the model with optimizer, loss function and other metrics
 model.compile(optimizer='rmsprop',
@@ -54,7 +61,7 @@ labels = numpy.array([
 model.fit(input, 
           labels,
           batch_size=1,
-          epochs=10, verbose=0,
+          epochs=500, verbose=0,
           callbacks=None,
           validation_split=0,
           validation_data=None,
