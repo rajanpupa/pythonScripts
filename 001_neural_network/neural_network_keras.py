@@ -2,13 +2,38 @@ from keras.models import Sequential;
 from keras.layers import Dense;
 import numpy;
 
+# Create a sequential model
 model = Sequential()
 
-# Add a input layer
-model.add(Dense(1, activation = 'sigmoid', input_shape=(3,)))
-# Can add multiple layers specifying the output vector and activation('relu', 'sigmoid', 'softmax' )
+# create a layer
+layer1 = Dense(
+          1,
+          activation = 'sigmoid', 
+          # activation = 'relu',
+          input_shape=(3,)
+        )
 
-# Compile the model with optimizer, loss function and 
+print("Weights ", layer1.get_weights() )
+
+w = numpy.random.rand(4, 1);
+print(w)
+b = numpy.random.rand(1)
+print(b)
+
+# weights = numpy.array([1,0,0])
+# biases = numpy.array([0])
+# setting weights
+# layer1.set_weights(
+#   [w,b]
+# )
+
+# Add a input layer
+model.add(
+  layer1
+)
+# Can add multiple layers specifying the output vector and activation('relu', 'sigmoid', 'softmax' ) etc
+
+# Compile the model with optimizer, loss function and other metrics
 model.compile(optimizer='rmsprop',
               loss = 'binary_crossentropy',
               metrics=['accuracy']
@@ -29,7 +54,7 @@ labels = numpy.array([
 model.fit(input, 
           labels,
           batch_size=1,
-          epochs=1000, verbose=0,
+          epochs=10, verbose=0,
           callbacks=None,
           validation_split=0,
           validation_data=None,
@@ -38,6 +63,14 @@ model.fit(input,
           sample_weight=None,
           initial_epoch=0
 )
+
+model.summary()
+
+# print the layer weights
+print('printing Trained weights: ')
+for layer in model.layers:
+    weights = layer.get_weights()
+    print(weights);
 
 # evaluate the test data
 print(
