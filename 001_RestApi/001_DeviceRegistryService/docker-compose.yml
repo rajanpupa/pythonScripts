@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+  device-registry:
+    build: .
+    ports:
+      - 5000:80
