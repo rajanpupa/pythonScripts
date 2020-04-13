@@ -12,6 +12,8 @@
 # ["notice", "possible"], "basicbasic"
 # Output:
 # -1
+
+# Solution copied
 from collections import Counter, defaultdict
 from math import inf, isinf
 
