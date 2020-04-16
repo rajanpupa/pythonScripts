@@ -24,7 +24,16 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
 class Solution:
     def flatten(self, root: TreeNode) -> None:
+        if not root : return
+        
+        right = root.right
+        root.right = root.left
+        root.left = None
+        
+        temp = root
+        while temp.right: temp=temp.right
+        temp.right = right
+        self.flatten(root.right)
         

@@ -31,31 +31,26 @@
 # babgbag
 #     ^^^
 class Solution:
+    # def numDistinct(self, s: str, t: str) -> int:
+    #     if not s: return 0
+    #     if len(s) < len(t): return 0
+    #     if len(t) == 1 : 
+    #         cnt = s.count(t)
+    #         return cnt
+    #     count = 0
+    #     for i in range(len(s)-len(t)+1):
+    #         if s[i] == t[0]:
+    #             count += self.numDistinct( s[i+1:], t[1:] )
+    #     return count;
     def numDistinct(self, s: str, t: str) -> int:
-        # print("processing ", s, t)
-        if not s: return 0
-        if len(s) < len(t): return 0
-        if len(t) == 1 : 
-            cnt = s.count(t)
-            # print("returning count", cnt)
-            return cnt
+        ti = 0
+        si = 0
 
-        # sdic = {}
-        # while c in s:
-        #     sdic[c] = sdic.get(c,0) + 1
-        
-        # tdic = {}
-        # while c in t:
-        #     tdic[c] = tdic.get(c,0)+1
-        #     if tdic[c] > sdic[c]: return 0
-        
-        count = 0
         for i in range(len(s)-len(t)+1):
-            # print(i)
-            if s[i] == t[0]:
-                count += self.numDistinct( s[i+1:], t[1:] )
-         
-        return count;
+            for j in range(len(t)):
+                # find jth char match
+                while s[si+j] != t[ti+j]: 
+                    si++;
 
 sln = Solution()
 s="adbdadeecadeadeccaeaabdabdbcdabddddabcaaadbabaaedeeddeaeebcdeabcaaaeeaeeabcddcebddebeebedaecccbdcbcedbdaeaedcdebeecdaaedaacadbdccabddaddacdddc"
