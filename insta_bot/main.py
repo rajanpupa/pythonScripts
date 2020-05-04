@@ -10,11 +10,8 @@ my_bot = InstaBot( insta_user, insta_pass );
 my_bot.navigate_profile_page(insta_user)
 followers = my_bot.find_followers()
 followees = my_bot.find_followers()
-# followers = ['redsky_nrg']
-# followees = ['redsky_nrg']
 
 all_users = set(followers).union(set(followees))
-
 
 print("followers=", followers)
 print("followees=", followers)
