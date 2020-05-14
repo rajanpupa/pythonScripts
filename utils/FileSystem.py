@@ -34,7 +34,7 @@ class FileSystem:
     def _folders(self, dir_name):
         folders = []
         for folder in os.listdir(dir_name):
-            if os.path.isdir(folder):
+            if os.path.isdir(os.path.join(dir_name,folder)):y
                 folders.append(os.path.join(dir_name,folder))
         return folders
     # delete a file to recycle bin
